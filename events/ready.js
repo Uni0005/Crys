@@ -5,7 +5,7 @@ module.exports = (client) => {
         console.log(`Logged in as ${client.user.tag}!`);
         const channel = client.channels.cache.get('958038707926085662');
         channel.send({ embeds: [BotReady] });
-        client.user.setActivity('Порно с Винтером в главной роли', { type: 'WATCHING' });
+        client.user.setActivity('Я работаю!', { type: 'WATCHING' });
         client.on('interactionCreate', async interaction => {
             if (!interaction.isCommand()) return;
         
@@ -14,7 +14,7 @@ module.exports = (client) => {
             if (!command) return;
         
             try {
-                await command.execute(interaction);
+                await command.run({ client, interaction });
             } catch (error) {
                 console.error(error);
                 await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
