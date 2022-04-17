@@ -12,7 +12,8 @@ module.exports = (client) => {
         const hasLeveledUp = await Levels.appendXp(message.author.id, message.guild.id, randomAmountOfXp);
         if (hasLeveledUp) {
           const user = await Levels.fetch(message.author.id, message.guild.id);
-          message.channel.send(`${message.author} только что получил ${user.level} уровень!. :tada:`);
+          const channel = client.channels.cache.get('946084937692512336');
+          channel.send(`${message.author} только что получил ${user.level} уровень!. :tada:`);
         }
       });
 

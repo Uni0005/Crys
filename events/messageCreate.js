@@ -1,6 +1,6 @@
 module.exports = (client) => {
     client.on('messageCreate', async (message) => {
-        if (message.channel.id == "963403919462133780" && !message.author.bot) {
+        if (message.channel.id == "944753576486526977" && !message.author.bot) {
             message.startThread( {
                 name: `[${message.member.displayName}] Suggention Discussion`
             }).then((thread) => {

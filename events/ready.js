@@ -3,7 +3,7 @@ module.exports = (client) => {
     const BotReady = new MessageEmbed().setTitle('Я снова в сети!').setColor('#32CD32')
     client.on('ready', () => {
         console.log(`Logged in as ${client.user.tag}!`);
-        const channel = client.channels.cache.get('927200393975463936');
+        const channel = client.channels.cache.get('958038707926085662');
         channel.send({ embeds: [BotReady] });
         client.user.setActivity('Порно с Винтером в главной роли', { type: 'WATCHING' });
         client.on('interactionCreate', async interaction => {
@@ -19,6 +19,6 @@ module.exports = (client) => {
                 console.error(error);
                 await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
             }
-        });    
+        });
     });
 }
