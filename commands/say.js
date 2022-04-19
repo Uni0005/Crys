@@ -16,6 +16,7 @@ module.exports = {
                         const channel = interaction.options.getChannel('channel') || interaction.channel;
                         const msg = interaction.options.getString('text');
                         const reply = interaction.options.getString('reply') || null
+                        
                         channel.send({content: msg, reply: { messageReference: reply }});
                         interaction.reply({content: 'Сообщение отправлено', ephemeral: true})
 
