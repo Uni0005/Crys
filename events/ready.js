@@ -1,7 +1,7 @@
 module.exports = (client) => {
     const { MessageEmbed } = require('discord.js');
     const BotReady = new MessageEmbed().setTitle('Я снова в сети!').setColor('#32CD32')
-    client.on('ready', () => {
+    client.on('ready', async () => {
         console.log(`Logged in as ${client.user.tag}!`);
         client.user.setActivity('в душу Яши...', { type: 'WATCHING' });
         client.on('interactionCreate', async interaction => {
