@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const Levels = require("discord-xp");
-const { mongo_uri } = require('../cfg.json');
+const { mongo_uri, back } = require('../cfg.json');
 Levels.setURL(mongo_uri);
 const canvacord = require('canvacord');
 
@@ -23,6 +23,7 @@ module.exports = {
             .setRequiredXP(Levels.xpFor(user.level + 1)) // We calculate the required Xp for the next level
             .setRank(user.position) // Position of the user on the leaderboard
             .setLevel(user.level) // Current Level of the user
+            .setBackground("IMAGE", back)
             .setStatus('streaming', circle = false, width = 9) 
             .setProgressBar("#78dbe2", "COLOR")
             .setUsername(target.username)
