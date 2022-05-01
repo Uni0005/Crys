@@ -12,7 +12,8 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-require('./events/messageCreate')(client);
+mongoose.connect(mongo_uri)
+
 require('./events/ready')(client);
 require('./events/lvl-system')(client);
 

@@ -1,11 +1,11 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
-const { daddy } = require('../cfg.json')
+const { daddy, rulog, enlog, ruserver, enserver } = require('../cfg.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('say')
-		.setDescription('qq')
+		.setDescription('Sends message')
                 .addStringOption(option => option.setName('text').setDescription('Введите текст').setRequired(true))
                 .addChannelOption(option => option.setName('channel').setDescription('Выбери канал'))
                 .addStringOption(option => option.setName('reply').setDescription('Ответ на сообщение'))
@@ -17,18 +17,48 @@ module.exports = {
                         const msg = interaction.options.getString('text');
                         const reply = interaction.options.getString('reply') || null
                         
-                        channel.send({content: msg, reply: { messageReference: reply }});
-                        interaction.reply({content: 'Сообщение отправлено', ephemeral: true})
+                        const message = await channel.send({content: msg, reply: { messageReference: reply }});
+                        //ru
+                        if (interaction.guild.id == ruserver){
+                            interaction.reply({content: 'Сообщение успешно отправлено!', ephemeral: true});
+                        
+                            if (interaction.member.id == daddy) return;
+                            else{
+                                    const au = interaction.user
+                                    const log = client.channels.cache.get(rulog);
+                                    const saye = new MessageEmbed()
+                                        .setTitle('User used say command.')
+                                        .setDescription(`${interaction.user} использовал команду say\n\n[Jump](${message.url})`)
+                                        .setFields(
+                                            { name: 'Чат', value: `${channel}`}, 
+                                            { name: 'Content', value: msg }
+                                        )
+                                        .setColor('#ff0000')
+                                    log.send({ embeds: [saye] });
+                            }
+                        };
+                        //en
+                        if (interaction.guild.id == enserver){
+                            interaction.reply({content: 'Message has been sent!', ephemeral: true});
+                        
+                            if (interaction.member.id == daddy) return;
+                            else{
+                                    const au = interaction.user
+                                    const log = client.channels.cache.get(enlog);
+                                    const saye = new MessageEmbed()
+                                        .setTitle('User used say command.')
+                                        .setDescription(`${interaction.user} used the say command\n\n[Jump](${message.url})`)
+                                        .setFields(
+                                            { name: 'Channel', value: `${channel}`}, 
+                                            { name: 'Content', value: msg }
+                                        )
+                                        .setColor('#ff0000')
+                                    log.send({ embeds: [saye] });
+                            }
+                        };
 
-                        if (interaction.member.id == daddy) return;
-                        else{
-                                const au = interaction.user
-                                const log = client.channels.cache.get('962312113525755904');
-                                const saye = new MessageEmbed().setTitle(`${au.tag} заставил меня сказать '${msg}'`)
-                                log.send({ embeds: [saye] });
-                        }
                 } else {
-                    interaction.reply({content: "Недостаточно прав", ephemeral: true})
+                    interaction.reply({content: "You dont have enough permissions", ephemeral: true})
                 };
                 },
 };

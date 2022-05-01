@@ -4,14 +4,14 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('status')
-		.setDescription('Just test'),
+		.setDescription("Bot's status"),
 	run: async({client, interaction, args}) => {
         const em = new MessageEmbed()   
-            .setTitle('Пинг')
+            .setTitle('Ping')
             .setFields(
                 {
-                name: 'Пинг Websocket',
-                value: `Пинг Websocket - ${client.ws.ping}`,
+                name: 'Ping Websocket',
+                value: `Ping Websocket - ${client.ws.ping}`,
                 },
             )
             .setColor('GREEN');
