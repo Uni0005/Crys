@@ -6,9 +6,9 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('say')
 		.setDescription('Sends message')
-                .addStringOption(option => option.setName('text').setDescription('Введите текст').setRequired(true))
-                .addChannelOption(option => option.setName('channel').setDescription('Выбери канал'))
-                .addStringOption(option => option.setName('reply').setDescription('Ответ на сообщение'))
+                .addStringOption(option => option.setName('text').setDescription('Content').setRequired(true))
+                .addChannelOption(option => option.setName('channel').setDescription('Choose channel'))
+                .addStringOption(option => option.setName('reply').setDescription('Reply message'))
                 .setDefaultPermission(true),
         
 	run: async ({client, interaction, args}) => {

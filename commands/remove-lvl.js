@@ -6,10 +6,10 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('remove-level')
 		.setDescription('Removing levels for the use')
-        .addUserOption(option => option.setName('user').setDescription('Выбери пользователя').setRequired(true))
-        .addIntegerOption(option => option.setName('amount').setDescription('Кол-во лвлов').setRequired(true)),
+        .addUserOption(option => option.setName('user').setDescription('Choose user').setRequired(true))
+        .addIntegerOption(option => option.setName('amount').setDescription('Lvls amount').setRequired(true)),
 	run: async ({client, interaction, args}) => {
-        if (interaction.member.permissions.has("MANAGE_WEBHOOKS", true)){
+        if (interaction.member.permissions.has("ADMINISTRATOR", true) | interaction.member.id == daddy){
             const xpam = interaction.options.getInteger('amount');
             const target = interaction.options.getUser('user');
             const user = (target.id);

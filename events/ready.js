@@ -1,10 +1,12 @@
 module.exports = (client) => {
-    const { MessageEmbed, ApplicationCommandPermissionData,
-        ApplicationCommandPermissionType } = require('discord.js');
-    const BotReady = new MessageEmbed().setTitle('Я снова в сети!').setColor('#32CD32')
+    const { MessageEmbed } = require('discord.js');
+    const { enlog } = require('../cfg.json')
     client.on('ready', async () => {
         console.log(`Logged in as ${client.user.tag}!`);
-        client.user.setActivity('Supernatural', { type: 'WATCHING' });
+        client.user.setActivity('Minecraft with Crystal', { type: 'PLAYING' });
+        const ac = client.channels.cache.get("958038707926085662");
+        const BotReady = new MessageEmbed().setTitle("I'm online again!").setColor('#32CD32')
+        ac.send({ embeds: [BotReady] })
         client.on('interactionCreate', async interaction => {
             if (!interaction.isCommand()) return;
         

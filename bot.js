@@ -1,4 +1,4 @@
-const { token, mongo_uri } = require('./cfg.json');
+const { token, mongo_uri, token2} = require('./cfg.json');
 const { Client, Collection, Intents } = require('discord.js');
 const client = new Client({ intents: [581] });
 const fs = require('node:fs');
@@ -12,9 +12,8 @@ for (const file of commandFiles) {
 	client.commands.set(command.data.name, command);
 }
 
-mongoose.connect(mongo_uri)
-
 require('./events/ready')(client);
 require('./events/lvl-system')(client);
+require('./events/lvl-roles')(client);
 
 client.login(token);

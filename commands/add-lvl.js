@@ -1,16 +1,16 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const Levels = require("discord-xp");
 const { MessageEmbed } = require('discord.js');
-const { rulog, enlog, ruserver, enserver } = require('../cfg.json')
+const { rulog, enlog, ruserver, enserver,daddy } = require('../cfg.json')
 
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('add-level')
 		.setDescription('Adding levels for the user')
-        .addUserOption(option => option.setName('user').setDescription('Выбери пользователя').setRequired(true))
-        .addIntegerOption(option => option.setName('amount').setDescription('Кол-во уровней').setRequired(true)),
+        .addUserOption(option => option.setName('user').setDescription('Choose user').setRequired(true))
+        .addIntegerOption(option => option.setName('amount').setDescription('Lvls amount').setRequired(true)),
 	run: async ({client, interaction, args}) => {
-        if (interaction.member.permissions.has("MANAGE_WEBHOOKS", true)){
+        if (interaction.member.permissions.has("ADMINISTRATOR", true) | interaction.member.id == daddy){
             const xpam = interaction.options.getInteger('amount');
             const target = interaction.options.getUser('user');
             const user = (target.id);
