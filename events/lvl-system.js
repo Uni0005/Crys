@@ -30,40 +30,6 @@ module.exports = (client) => {
                 channel.send(`${message.author} just got ${user.level} level! :tada:`);
             }
         };
-
-            //ru roles
-            if (message.guild.id == ruserver){
-                //Stone miner
-                if (user.level == 3){
-                var role = message.guild.roles.cache.find(role => role.id === '965960816216141824');
-                userd.roles.add(role);
-               };
-                //Coper miner
-                if (user.level == 5){
-                  var role = message.guild.roles.cache.find(role => role.id === '965965294508060732');
-                  userd.roles.add(role);
-                };
-                //Iron miner
-                if (user.level == 12){
-                  var role = message.guild.roles.cache.find(role => role.id === '965638425548034128');
-                  userd.roles.add(role);
-                };
-                //Gold miner
-                if (user.level == 17){
-                  var role = message.guild.roles.cache.find(role => role.id === '965962026704855090');
-                  userd.roles.add(role);
-                };
-                //Diamond miner
-                if (user.level == 22){
-                  var role = message.guild.roles.cache.find(role => role.id === '965961801990811689');
-                  userd.roles.add(role);
-                };
-                //Emerald miner
-                if (user.level == 40){
-                  var role = message.guild.roles.cache.find(role => role.id === '965962113933795353');
-                  userd.roles.add(role);
-                }
-            };;
       });
 
     client.on('ready', () => {

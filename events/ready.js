@@ -4,7 +4,7 @@ module.exports = (client) => {
     client.on('ready', async () => {
         console.log(`Logged in as ${client.user.tag}!`);
         client.user.setActivity('Minecraft with Crystal', { type: 'PLAYING' });
-        const ac = client.channels.cache.get("958038707926085662");
+        const ac = client.channels.cache.get(enlog);
         const BotReady = new MessageEmbed().setTitle("I'm online again!").setColor('#32CD32')
         ac.send({ embeds: [BotReady] })
         client.on('interactionCreate', async interaction => {

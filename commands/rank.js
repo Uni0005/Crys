@@ -18,17 +18,18 @@ module.exports = {
         const target = interaction.options.getUser('user') || interaction.user;
         const user = await Levels.fetch(target.id, interaction.guild.id, true);
         const ep = interaction.options.getBoolean('ephemeral')
+        var userd = interaction.guild.members.cache.get(target.id);
 		if (!user) {
 			return interaction.reply({ content: "This user has no levels."});
 		} else{
-			const rank = new canvacord.Rank() // Build the Rank Card
+			const rank = new canvacord.Rank()
             .setAvatar(target.displayAvatarURL({format: 'png', size: 512}))
-            .setCurrentXP(user.xp) // Current User Xp
-            .setRequiredXP(Levels.xpFor(user.level + 1)) // We calculate the required Xp for the next level
-            .setRank(user.position) // Position of the user on the leaderboard
-            .setLevel(user.level) // Current Level of the user
-            .setBackground("IMAGE", forest)
-            .setStatus('streaming', circle = false, width = 6) 
+            .setCurrentXP(user.xp) 
+            .setRequiredXP(Levels.xpFor(user.level + 1)) 
+            .setRank(user.position) 
+            .setLevel(user.level) 
+            .setBackground("IMAGE", day)
+            .setStatus('online', circle = false, width = 6) 
             .setProgressBar("#78dbe2", "COLOR")
             .setUsername(target.username)
             .setDiscriminator(target.discriminator);

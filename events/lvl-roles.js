@@ -1,5 +1,5 @@
 const { mongo_uri, enserver, ruserver, testserver } = require('../cfg.json')
-const { emeraldminerId, diamondminerId, ironminerId, goldminerId, copperminerId, stoneminerId } = require("../configs/en-roles.json")
+const { emeraldminerId, diamondminerId, ironminerId, goldminerId, copperminerId, stoneminerId } = require("../configs/enroles.json")
 const { ru_emeraldminerId, ru_diamondminerId, ru_ironminerId, ru_goldminerId, ru_copperminerId, ru_stoneminerId } = require("../configs/ruroles.json")
 
 const Levels = require("discord-xp");
@@ -15,7 +15,7 @@ module.exports = (client) => {
         //en roles
         var emeraldminer = message.guild.roles.cache.find(role => role.id === emeraldminerId);
         var diamondminer = message.guild.roles.cache.find(role => role.id === diamondminerId);
-        var ironminerId = message.guild.roles.cache.find(role => role.id === ironminer);
+        var ironminer = message.guild.roles.cache.find(role => role.id === ironminerId);
         var goldminer = message.guild.roles.cache.find(role => role.id === goldminerId);
         var copperminer = message.guild.roles.cache.find(role => role.id === copperminerId);
         var stoneminer = message.guild.roles.cache.find(role => role.id === stoneminerId);
@@ -23,7 +23,7 @@ module.exports = (client) => {
         //ru roles
         var ru_emeraldminer = message.guild.roles.cache.find(role => role.id === ru_emeraldminerId);
         var ru_diamondminer = message.guild.roles.cache.find(role => role.id === ru_diamondminerId);
-        var ru_ironminerId = message.guild.roles.cache.find(role => role.id === ru_ironminer);
+        var ru_ironminer = message.guild.roles.cache.find(role => role.id === ru_ironminerId);
         var ru_goldminer = message.guild.roles.cache.find(role => role.id === ru_goldminerId);
         var ru_copperminer = message.guild.roles.cache.find(role => role.id === ru_copperminerId);
         var ru_stoneminer = message.guild.roles.cache.find(role => role.id === ru_stoneminerId);
@@ -36,7 +36,7 @@ module.exports = (client) => {
         // 90+ = emerald miner
 
         //ru server
-        if(message.guild.id == ruserver ){
+        if(message.guild.id == ruserver){
             //stone miner
             if (user.level >= 3){
                 if (user.level >= 10) return;
@@ -87,12 +87,12 @@ module.exports = (client) => {
             };
         };
         //en
-        if(message.guild.id == enserver ){
+        if(message.guild.id == enserver){
             //stone miner
-            if (user.level >= 3){
-                if (user.level >= 10) return;
+            if (user.level >= 3 < 10){
+                // if (user.level >= 10);
                 userd.roles.add(stoneminer);
-            };
+            }
             //copper miner
             if (user.level >= 10){
                 if (user.level >= 25) return;
@@ -110,7 +110,7 @@ module.exports = (client) => {
             //gold miner
             if (user.level >= 47){
                 if (user.level >= 60) return;
-                userd.roles.remove(ru_stoneminer);
+                userd.roles.remove(stoneminer);
                 userd.roles.remove(copperminer);
                 userd.roles.remove(ironminer);
 

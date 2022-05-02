@@ -38,7 +38,7 @@ module.exports = {
                 log.send({ embeds: [slog] });
             };
             //en
-            if (interaction.guild.id == testserver){
+            if (interaction.guild.id == enserver){
                 if (xpam<1){
                     interaction.reply({content: 'You cannot set a level if it is less than 0', ephemeral: true})
                     return
