@@ -27,7 +27,7 @@ module.exports = (client) => {
             //en
             if (message.guild.id == enserver){
                 const channel = client.channels.cache.get('803502234930774078');
-                channel.send(`${message.author} just got ${user.level} level! :tada:`);
+                channel.send(`${message.author} has reached level ${user.level}! :tada:`);
             }
         };
       });
