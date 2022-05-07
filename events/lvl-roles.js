@@ -11,6 +11,7 @@ module.exports = (client) => {
         if (message.author.bot) return;
         const user = await Levels.fetch(message.author.id, message.guild.id);
         var userd = message.guild.members.cache.get(message.author.id);
+      const ul = user.level
 
         //en roles
         var emeraldminer = message.guild.roles.cache.find(role => role.id === emeraldminerId);
@@ -38,27 +39,23 @@ module.exports = (client) => {
         //ru server
         if(message.guild.id == ruserver){
             //stone miner
-            if (user.level >= 3){
-                if (user.level >= 10) return;
+            if (ul >= 3 && ul < 10){
                 userd.roles.add(ru_stoneminer);
             };
             //copper miner
-            if (user.level >= 10){
-                if (user.level >= 25) return;
+            if (ul >= 10 && ul < 25){
                 userd.roles.remove(ru_stoneminer);
                 userd.roles.add(ru_copperminer);
             };
             //iron miner
-            if (user.level >= 25){
-                if (user.level >= 47) return;
+            if (ul >= 25 && ul < 47){
                 userd.roles.remove(ru_stoneminer);
                 userd.roles.remove(ru_copperminer);
 
                 userd.roles.add(ru_ironminer);
             };
             //gold miner
-            if (user.level >= 47){
-                if (user.level >= 60) return;
+            if (ul >= 47 && ul < 60){
                 userd.roles.remove(ru_stoneminer);
                 userd.roles.remove(ru_copperminer);
                 userd.roles.remove(ru_ironminer);
@@ -66,8 +63,7 @@ module.exports = (client) => {
                 userd.roles.add(ru_goldminer);
             };
             //diamond miner
-            if (user.level >= 60){
-                if (user.level >= 90) return;
+            if (ul >= 60 && ul < 90){
                 userd.roles.remove(ru_stoneminer);
                 userd.roles.remove(ru_copperminer);
                 userd.roles.remove(ru_ironminer);
@@ -76,7 +72,7 @@ module.exports = (client) => {
                 userd.roles.add(ru_diamondminer);
             };
             //emerald miner
-            if (user.level >= 90){
+            if (ul >= 90){
                 userd.roles.remove(ru_stoneminer);
                 userd.roles.remove(ru_copperminer);
                 userd.roles.remove(ru_ironminer);
@@ -89,27 +85,23 @@ module.exports = (client) => {
         //en
         if(message.guild.id == enserver){
             //stone miner
-            if (user.level >= 3 < 10){
-                // if (user.level >= 10);
+            if (ul >= 3 && ul < 10){
                 userd.roles.add(stoneminer);
             }
             //copper miner
-            if (user.level >= 10){
-                if (user.level >= 25) return;
+            if (ul >= 10 && ul < 25){
                 userd.roles.remove(stoneminer);
                 userd.roles.add(copperminer);
             };
             //iron miner
-            if (user.level >= 25){
-                if (user.level >= 47) return;
+            if (ul >= 25 && ul < 47){
                 userd.roles.remove(stoneminer);
                 userd.roles.remove(copperminer);
 
                 userd.roles.add(ironminer);
             };
             //gold miner
-            if (user.level >= 47){
-                if (user.level >= 60) return;
+            if (ul >= 47 && ul < 60){
                 userd.roles.remove(stoneminer);
                 userd.roles.remove(copperminer);
                 userd.roles.remove(ironminer);
@@ -117,8 +109,7 @@ module.exports = (client) => {
                 userd.roles.add(goldminer);
             };
             //diamond miner
-            if (user.level >= 60){
-                if (user.level >= 90) return;
+            if (ul >= 60 && ul < 90){
                 userd.roles.remove(stoneminer);
                 userd.roles.remove(copperminer);
                 userd.roles.remove(ironminer);
@@ -127,7 +118,7 @@ module.exports = (client) => {
                 userd.roles.add(diamondminer);
             };
             //emerald miner
-            if (user.level >= 90){
+            if (ul >= 90){
                 userd.roles.remove(stoneminer);
                 userd.roles.remove(copperminer);
                 userd.roles.remove(ironminer);
