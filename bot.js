@@ -15,5 +15,7 @@ for (const file of commandFiles) {
 require('./events/ready')(client);
 require('./events/lvl-system')(client);
 require('./events/lvl-roles')(client);
+require('./events/star')(client);
+require('./events/ycc')(client);
 
 client.login(token);
